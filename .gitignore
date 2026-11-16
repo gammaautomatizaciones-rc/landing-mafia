@@ -1,3 +1,7 @@
 worker/
 _tools/
 CLAUDE.md
+CREDENCIALES.md
+TREE.md
+.env
+HILO_CONVERSACION.md
