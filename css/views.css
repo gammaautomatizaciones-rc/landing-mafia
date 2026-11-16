@@ -8,6 +8,20 @@
 }
 .item svg { width: 22px; height: 22px; flex: none; color: var(--gold); }
 .item[aria-pressed='true'] { color: var(--gold); background: var(--panel2); box-shadow: inset 3px 3px 0 var(--gold), inset -3px -3px 0 var(--gold-lo); }
+.item small { margin-left: auto; font: 9px 'Press Start 2P', monospace; color: var(--gold-hi); }
+.item small.hot { color: var(--red-hi); animation: blink 1s steps(2) infinite; }
+.n { color: var(--gold-hi); }
+.vac { color: var(--red-hi); }
+.btn.hot { color: #fff; background: var(--red); box-shadow: inset 3px 3px 0 var(--red-hi), inset -3px -3px 0 #6e0f19; }
+.detail .btn { margin-top: 12px; }
+#hiring:empty { display: none; }
+
+/* MIEMBROS */
+.mgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+.mem { display: flex; align-items: center; gap: 10px; padding: 6px 8px; background: var(--bg); border: 4px solid #000; }
+.mem svg { width: 32px; height: 32px; flex: none; border: 2px solid #000; }
+.mem b { display: block; font: 18px/1.1 'VT323', monospace; color: var(--text); overflow: hidden; text-overflow: ellipsis; }
+.mem span { display: block; font-size: 16px; line-height: 1.1; color: var(--muted); }
 .detail h3 { color: var(--gold); font-size: 13px; margin: 4px 0 10px; }
 .detail p { margin-bottom: 8px; }
 .detail .tag { font: 9px 'Press Start 2P', monospace; color: var(--muted); }
@@ -50,6 +64,12 @@ button[disabled] { opacity: .6; cursor: wait; }
   .rules li { font-size: 18px; padding: 8px; }
   .roles { gap: 6px; }
   .roles b { display: inline; margin-right: 8px; }
+  .item small { margin-left: 0; }
+  .mgrid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .mem { gap: 6px; padding: 4px 6px; }
+  .mem svg { width: 24px; height: 24px; }
+  .mem b { font-size: 16px; }
+  .mem span { font-size: 14px; }
 }
 
 /* celulares bajos: se ahorra altura para que ninguna pestaña haga scroll */
@@ -58,4 +78,8 @@ button[disabled] { opacity: .6; cursor: wait; }
   .title { margin-bottom: 8px; }
   .sub { display: none; }
   .rules li { padding: 6px 8px; font-size: 17px; }
+  .roles { grid-template-columns: 1fr 1fr; gap: 4px 8px; }
+  .roles li { padding-top: 4px; }
+  .roles li > span { display: none; }
+  .roles b { font-size: 8px; }
 }

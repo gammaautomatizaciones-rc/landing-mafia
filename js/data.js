@@ -57,11 +57,48 @@ const RULES = [
   'Juego limpio: sin hacks, sin duplicar items, sin trampas.',
 ];
 
+// Miembros de ejemplo (demo: true) para que la web no se vea vacía. Para dejar solo gente real:
+// borrar las líneas con demo: true y sumar las reales. Todo (conteos, tarjetas) se recalcula solo.
+const MEMBERS = [
+  { nick: 'DonGaston', rank: 'Don', role: 'Estratega', demo: true },
+  { nick: 'Vito_Neron', rank: 'Subjefe', role: 'Comandante', demo: true },
+  { nick: 'Sal_Marino', rank: 'Consigliere', role: 'Diplomático', demo: true },
+  { nick: 'Lucca_X', rank: 'Capo', role: 'Tesorero', demo: true },
+  { nick: 'ElTurco77', rank: 'Capo', role: 'Combatiente', demo: true },
+  { nick: 'Nacho_Blaze', rank: 'Capo', role: 'Ingeniero de TNT', demo: true },
+  { nick: 'Mateo_Spy', rank: 'Teniente', role: 'Espía', demo: true },
+  { nick: 'Fede_Ironfist', rank: 'Teniente', role: 'Combatiente', demo: true },
+  { nick: 'Bruno_Gold', rank: 'Teniente', role: 'Mercader', demo: true },
+  { nick: 'Kiara_PvP', rank: 'Teniente', role: 'Arquero', demo: true },
+  { nick: 'Facu_Redstone', rank: 'Soldado', role: 'Redstoner', demo: true },
+  { nick: 'Tobi_Pick', rank: 'Soldado', role: 'Minero', demo: true },
+  { nick: 'Santi_Wolf', rank: 'Soldado', role: 'Defensor de base', demo: true },
+  { nick: 'Lola_Craft', rank: 'Soldado', role: 'Constructor', demo: true },
+  { nick: 'Cobra_77', rank: 'Soldado', role: 'Cobrador', demo: true },
+  { nick: 'Nico_Anvil', rank: 'Soldado', role: 'Herrero', demo: true },
+  { nick: 'Tati_Hunter', rank: 'Soldado', role: 'Reclutador', demo: true },
+  { nick: 'Joaco_Spy', rank: 'Asociado', role: 'Espía', demo: true },
+  { nick: 'Vale_Farm', rank: 'Asociado', role: 'Granjero', demo: true },
+  { nick: 'Pipo_Vigia', rank: 'Asociado', role: 'Vigía', demo: true },
+  { nick: 'Mica_Dollar', rank: 'Asociado', role: 'Lavador', demo: true },
+  { nick: 'Gonza_TNT', rank: 'Asociado', role: 'Ingeniero de TNT', demo: true },
+  { nick: 'Agus_Miner', rank: 'Recluta', role: 'Minero', demo: true },
+  { nick: 'Ceci_Bow', rank: 'Recluta', role: 'Arquero', demo: true },
+  { nick: 'Dante_PvP', rank: 'Recluta', role: 'Combatiente', demo: true },
+  { nick: 'Lauti_Build', rank: 'Recluta', role: 'Constructor', demo: true },
+  { nick: 'Maxi_Info', rank: 'Recluta', role: 'Informante', demo: true },
+];
+
+// Áreas que se están reclutando AHORA: salen marcadas "SE BUSCAN" y con botón de postulación.
+// Sin sicarios entre los miembros a propósito: es el llamado. Cuando ya no hagan falta, vaciar la lista.
+const HIRING = ['Sicarios'];
+
 // [id de la sección, texto de la pestaña, icono]
 const TABS = [
   ['inicio', 'Inicio', 'crown'],
   ['rangos', 'Rangos', 'star'],
   ['areas', 'Áreas', 'sword'],
+  ['miembros', 'Miembros', 'users'],
   ['codigo', 'Código', 'scroll'],
   ['unirme', 'Unirme', 'shield'],
 ];
