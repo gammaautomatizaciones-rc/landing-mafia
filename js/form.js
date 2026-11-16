@@ -3,10 +3,20 @@ const API = 'https://mafia-reclutamiento.gamma-automatizaciones.workers.dev';
 const form = document.getElementById('form');
 const msg = document.getElementById('msg');
 
+const disc = form.elements.discord;
+const noDisc = document.getElementById('nodiscord');
+
 function say(text, ok) {
   msg.textContent = text;
   msg.className = 'msg ' + (ok ? 'ok' : 'err');
 }
+
+// "No tengo Discord": el campo queda con el texto "no tengo" y bloqueado (readonly, así viaja en el envío)
+noDisc.addEventListener('change', () => {
+  disc.readOnly = noDisc.checked;
+  disc.value = noDisc.checked ? 'no tengo' : '';
+  if (!noDisc.checked) disc.focus();
+});
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -22,7 +32,8 @@ form.addEventListener('submit', async (e) => {
     });
     if (!res.ok) throw new Error(res.status);
     form.reset();
-    say('Listo. Un Reclutador te escribe por Discord.', true);
+    disc.readOnly = false;
+    say('Listo. Un Reclutador te contacta pronto.', true);
   } catch {
     say('No se pudo enviar. Prueba de nuevo en unos minutos.', false);
   }

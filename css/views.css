@@ -54,6 +54,9 @@ input, select {
 select option, select optgroup { background: var(--panel); color: var(--text); }
 input:focus, select:focus { outline: 3px solid var(--gold); outline-offset: 0; }
 input:user-invalid, select:user-invalid { border-color: var(--red); }
+.check { display: flex; align-items: center; gap: 10px; font: 20px 'VT323', monospace; color: var(--text); cursor: pointer; }
+.check input { width: 22px; height: 22px; padding: 0; accent-color: var(--gold); box-shadow: none; }
+input[readonly] { color: var(--muted); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
 .msg { min-height: 24px; font-size: 20px; }
 .msg.ok { color: #4ade80; }
