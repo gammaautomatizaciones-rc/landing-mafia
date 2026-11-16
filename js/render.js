@@ -54,7 +54,7 @@ function masterDetail(rootId, items, cols, fill) {
 }
 
 masterDetail('ranks', RANKS, 4, (r, box, i) => box.append(
-  el('span', 'tag', 'RANGO ' + (i + 1)), el('h3', '', r.name), el('p', '', r.desc), el('p', 'req', 'Cómo se llega: ' + r.req),
+  el('span', 'tag', 'RANGO ' + (i + 1)), el('h3', '', r.name), el('p', '', r.desc), el('p', 'req', 'Responde a: ' + r.resp),
 ));
 
 const withRole = (role) => MEMBERS.filter((m) => m.role === role);
@@ -81,7 +81,7 @@ const applyBtn = (text, role, cls) => {
 // En cada área: cuántos miembros hay en el área y en cada rol (puede haber varios por rol).
 // Las áreas de HIRING salen "SE BUSCAN", con sus roles vacantes y botón para postularse.
 const areaItems = AREAS.map((a) => ({
-  ...a, hot: HIRING.includes(a.name), count: a.roles.reduce((n, [r]) => n + withRole(r).length, 0),
+  ...a, hot: HIRING.includes(a.name), count: a.roles.reduce((n, [r]) => n + withRole(r).length, 0) || null, // sin "0" si está vacía
 }));
 masterDetail('areas-md', areaItems, 3, (a, box) => {
   const list = el('ul', 'roles');
@@ -103,13 +103,17 @@ AREAS.filter((a) => HIRING.includes(a.name)).forEach((a) => {
 });
 
 // Miembros: por rango, con su cara pixel, su nick y su rol
-masterDetail('members-md', RANKS.map((r) => ({ ...r, count: withRank(r.name).length })), 4, (r, box) => {
+// Un rango con `buscan` sale "SE BUSCAN" y trae el botón para postularse con ese rol elegido
+masterDetail('members-md', RANKS.map((r) => ({ ...r, hot: Boolean(r.buscan), count: withRank(r.name).length })), 4, (r, box) => {
   const people = withRank(r.name);
   box.append(el('h3', '', `${r.name}: ${people.length} ${people.length === 1 ? 'miembro' : 'miembros'}`));
-  if (!people.length) return box.append(el('p', '', 'Todavía no hay miembros en este rango.'));
-  const grid = el('div', 'mgrid');
-  people.forEach((m) => grid.append(person(m)));
-  box.append(grid);
+  if (!people.length) box.append(el('p', '', r.buscan ? `Todavía no hay ${r.name.toLowerCase()}s y se buscan.` : 'Todavía no hay miembros en este rango.'));
+  else {
+    const grid = el('div', 'mgrid');
+    people.forEach((m) => grid.append(person(m)));
+    box.append(grid);
+  }
+  if (r.buscan) box.append(applyBtn('Postularme como ' + r.name.toLowerCase(), r.buscan, 'hot'));
 });
 
 // Inscriptos: ya mandaron su postulación. Punto dorado = ya en entrevista, gris = en revisión

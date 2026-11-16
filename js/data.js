@@ -1,15 +1,14 @@
 // Contenido de la web: se edita acá, el HTML no se toca. Icono = nombre en js/pixel.js
 const RANKS = [
-  { name: 'Don', icon: 'crown', desc: 'Jefe de la familia. Su palabra es la última y no se discute.', req: 'Fundador del equipo.' },
-  { name: 'Subjefe', icon: 'star', desc: 'Mano derecha del Don. Manda cuando el Don no está.', req: 'Lo elige el Don entre los Capos.' },
-  { name: 'Consigliere', icon: 'scroll', desc: 'Consejero. No lidera tropas: aporta ideas, pactos y estrategia.', req: 'Confianza total del Don y mucha antigüedad.' },
-  { name: 'Capo', icon: 'shield', desc: 'Lidera un crew y responde por cada uno de los suyos.', req: 'Dirigir un crew activo y probar lealtad.' },
-  { name: 'Teniente', icon: 'chevrons', desc: 'Segundo del Capo. Organiza turnos, farmeo y raids.', req: 'Cumplir misiones sin que nadie se lo pida.' },
-  { name: 'Soldado', icon: 'sword', desc: 'Miembro de pleno derecho. Cumple misiones y defiende la base.', req: 'Superar la prueba de Asociado.' },
-  { name: 'Asociado', icon: 'coin', desc: 'Ya trabajó para la familia, pero todavía no tiene voto.', req: 'Mostrar actividad y obediencia como Recluta.' },
-  { name: 'Recluta', icon: 'pickaxe', desc: 'Todos empiezan aquí: aprendes las reglas y demuestras qué sabes hacer.', req: 'Postularte y pasar la entrevista.' },
+  { name: 'Don', icon: 'crown', desc: 'El jefe de todo. Manda sobre toda la familia.', resp: 'A nadie.' },
+  { name: 'Subjefe', icon: 'star', desc: 'El que sigue al Don cuando él no está.', resp: 'Al Don.' },
+  { name: 'Teniente', icon: 'chevrons', desc: 'Se encarga de ir a las guerras y organizar a los soldados. También lleva a cabo las ejecuciones.', resp: 'Al Subjefe y al Don.' },
+  { name: 'Soldado', icon: 'sword', desc: 'Miembro de pleno derecho que pelea: algunos en PvP cuerpo a cuerpo y otros a distancia con armas de fuego.', resp: 'Al Teniente, al Subjefe o al Don.' },
+  // buscan: rol que se preselecciona en el formulario. Quitarlo cuando ya no hagan falta.
+  { name: 'Sicario', icon: 'skull', desc: 'Independiente de la cadena de mando. Hace las ejecuciones y los encargos difíciles.', resp: 'Solo al Don.', buscan: 'Sicario' },
+  { name: 'Asociado', icon: 'coin', desc: 'Por debajo del Soldado. Solo mineros y granjeros.', resp: 'A los Soldados y a sus superiores.' },
+  { name: 'Recluta', icon: 'pickaxe', desc: 'También por debajo del Soldado. Solo mineros y granjeros: consiguen los recursos y plantan.', resp: 'A los Soldados y a sus superiores.' },
 ];
-
 const AREAS = [
   { name: 'Finanzas', icon: 'coin', desc: 'El dinero de la familia: que entre, que se cuide y que no se note de dónde vino.', roles: [
     ['Tesorero', 'Lleva las cuentas y el cofre de la familia.'],
@@ -17,11 +16,11 @@ const AREAS = [
     ['Lavador', 'Convierte el botín sucio en recursos limpios.'],
     ['Cobrador', 'Cobra la protección a otros jugadores y tiendas.'],
   ] },
-  { name: 'Guerra', icon: 'sword', desc: 'La fuerza de la familia: ataque, defensa y todo lo que explota.', roles: [
+  { name: 'Guerra', icon: 'sword', desc: 'PvP, armas de fuego, defensa y todo lo que explota.', roles: [
     ['Comandante', 'Dirige la ofensiva en guerras y raids.'],
     ['Estratega', 'Planea rutas, tiempos y emboscadas.'],
-    ['Combatiente', 'Primera línea en el PvP.'],
-    ['Arquero', 'Ataca a distancia con arco, ballesta o tridente.'],
+    ['Combatiente', 'Pelea cuerpo a cuerpo (PvP).'],
+    ['Tirador', 'Pelea a distancia con armas de fuego.'],
     ['Ingeniero de TNT', 'Cañones, trampas y redstone de guerra.'],
     ['Defensor de base', 'Guardia, vigilancia y trampas en casa.'],
   ] },
@@ -52,7 +51,7 @@ const RULES = [
   'Lealtad primero: la familia va antes que cualquier amistad.',
   'Omertà: lo que pasa en la familia no se cuenta afuera.',
   'Nada de robar ni griefear a los tuyos. Quien traiciona, sale.',
-  'Respeto a la cadena de mando: al Capo se le obedece.',
+  'Respeto a la cadena de mando: se obedece al Teniente, al Subjefe y al Don.',
   'Actividad: avisa si te ausentas o pierdes tu rango.',
   'Juego limpio: sin hacks, sin duplicar items, sin trampas.',
 ];
@@ -62,33 +61,15 @@ const RULES = [
 const MEMBERS = [
   { nick: 'shobsito', rank: 'Don', role: 'Estratega', skin: '#ffdbac', hair: '#18181b' }, // skin/hair: cara a medida (opcional)
   { nick: 'wolfdark13', rank: 'Subjefe', role: 'Comandante', demo: true },
-  { nick: 'minejavi151', rank: 'Consigliere', role: 'Diplomático', demo: true },
-  { nick: 'canito241', rank: 'Capo', role: 'Tesorero', demo: true },
-  { nick: 'shadow231crew', rank: 'Capo', role: 'Combatiente', demo: true },
-  { nick: 'facu762elpro', rank: 'Capo', role: 'Ingeniero de TNT', demo: true },
-  { nick: 'n1colas99', rank: 'Teniente', role: 'Espía', demo: true },
-  { nick: 'TomiPlayz', rank: 'Teniente', role: 'Combatiente', demo: true },
-  { nick: 'lauta_elcapo', rank: 'Teniente', role: 'Mercader', demo: true },
-  { nick: 'cande2216', rank: 'Teniente', role: 'Arquero', demo: true },
-  { nick: 'juancho_77', rank: 'Soldado', role: 'Redstoner', demo: true },
-  { nick: 'ElNico310', rank: 'Soldado', role: 'Minero', demo: true },
-  { nick: 'gonzaaa17', rank: 'Soldado', role: 'Defensor de base', demo: true },
-  { nick: 'santiGM', rank: 'Soldado', role: 'Constructor', demo: true },
-  { nick: 'mateo12elmejor', rank: 'Soldado', role: 'Cobrador', demo: true },
-  { nick: 'rodri48pro', rank: 'Soldado', role: 'Herrero', demo: true },
-  { nick: 'ironmike305', rank: 'Soldado', role: 'Reclutador', demo: true },
-  { nick: 'agus_2007', rank: 'Asociado', role: 'Espía', demo: true },
-  { nick: 'luchito45', rank: 'Asociado', role: 'Granjero', demo: true },
-  { nick: 'elflaco88', rank: 'Asociado', role: 'Vigía', demo: true },
-  { nick: 'pixelcat88', rank: 'Asociado', role: 'Lavador', demo: true },
-  { nick: 'aleee_01', rank: 'Asociado', role: 'Ingeniero de TNT', demo: true },
-  { nick: 'Thiagox', rank: 'Recluta', role: 'Minero', demo: true },
-  { nick: 'benjita12', rank: 'Recluta', role: 'Arquero', demo: true },
-  { nick: 'xRamiro', rank: 'Recluta', role: 'Combatiente', demo: true },
-  { nick: 'kev1n2k8', rank: 'Recluta', role: 'Constructor', demo: true },
-  { nick: 'laraaa27', rank: 'Recluta', role: 'Informante', demo: true },
+  { nick: 'n1colas99', rank: 'Teniente', role: 'Combatiente', demo: true },
+  { nick: 'minejavi151', rank: 'Soldado', role: 'Combatiente', demo: true },
+  { nick: 'canito241', rank: 'Soldado', role: 'Tirador', demo: true },
+  { nick: 'shadow231crew', rank: 'Soldado', role: 'Tirador', demo: true },
+  { nick: 'facu762elpro', rank: 'Soldado', role: 'Combatiente', demo: true },
+  { nick: 'juancho_77', rank: 'Soldado', role: 'Tirador', demo: true },
+  { nick: 'ElNico310', rank: 'Soldado', role: 'Combatiente', demo: true },
+  { nick: 'gonzaaa17', rank: 'Soldado', role: 'Combatiente', demo: true },
 ];
-
 // Inscriptos de ejemplo: ya mandaron su postulación y esperan respuesta (estado: 'Entrevista' o 'En revisión').
 // Mismo criterio que MEMBERS: borrar los demo: true y sumar los reales. Sin sicarios, a propósito.
 const INSCRIPTOS = [
@@ -96,7 +77,7 @@ const INSCRIPTOS = [
   { nick: 'damian417', role: 'Herrero', estado: 'Entrevista', demo: true },
   { nick: 'BautiPro', role: 'Minero', estado: 'Entrevista', demo: true },
   { nick: 'sofi_1998', role: 'Mercader', estado: 'Entrevista', demo: true },
-  { nick: 'maxiking', role: 'Arquero', estado: 'En revisión', demo: true },
+  { nick: 'maxiking', role: 'Tirador', estado: 'En revisión', demo: true },
   { nick: 'ezeee24', role: 'Constructor', estado: 'En revisión', demo: true },
   { nick: 'lulita_07', role: 'Combatiente', estado: 'En revisión', demo: true },
   { nick: 'blazeking17', role: 'Vigía', estado: 'En revisión', demo: true },
