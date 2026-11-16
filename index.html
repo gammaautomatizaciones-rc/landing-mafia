@@ -18,9 +18,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
-  <link rel="stylesheet" href="css/base.css?v=7">
-  <link rel="stylesheet" href="css/layout.css?v=7">
-  <link rel="stylesheet" href="css/views.css?v=7">
+  <link rel="stylesheet" href="css/base.css?v=8">
+  <link rel="stylesheet" href="css/layout.css?v=8">
+  <link rel="stylesheet" href="css/views.css?v=8">
 </head>
 <body>
   <header class="top">
@@ -72,20 +72,19 @@
       <h2 class="title">Unirme a la familia</h2>
       <form class="panel form" id="form" novalidate>
         <label>Nick de Minecraft<input name="nick" required minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" placeholder="Steve_123" autocomplete="off"></label>
-        <label>Usuario de Discord<input name="discord" required maxlength="33" placeholder="tuusuario" autocomplete="off"></label>
-        <label class="check"><input type="checkbox" id="nodiscord">No tengo Discord</label>
+        <label>Discord o teléfono<input name="contacto" required maxlength="33" placeholder="tu usuario de Discord o tu número" autocomplete="off"></label>
         <label>Rol que quieres<select name="rol" id="rol" required></select></label>
         <input class="hp" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn" type="submit">Enviar</button>
         <p class="msg" id="msg" role="status" aria-live="polite"></p>
       </form>
-      <p class="note">Solo Java. Si no tienes Discord, te contactamos dentro del juego.</p>
+      <p class="note">Solo Java. Te contactamos por Discord o por teléfono.</p>
     </section>
   </main>
 
-  <script src="js/data.js?v=7" defer></script>
-  <script src="js/pixel.js?v=7" defer></script>
-  <script src="js/render.js?v=7" defer></script>
-  <script src="js/form.js?v=7" defer></script>
+  <script src="js/data.js?v=8" defer></script>
+  <script src="js/pixel.js?v=8" defer></script>
+  <script src="js/render.js?v=8" defer></script>
+  <script src="js/form.js?v=8" defer></script>
 </body>
 </html>
