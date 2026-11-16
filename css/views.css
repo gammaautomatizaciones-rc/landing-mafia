@@ -22,6 +22,11 @@
 .mem svg { width: 32px; height: 32px; flex: none; border: 2px solid #000; }
 .mem b { display: block; font: 18px/1.1 'VT323', monospace; color: var(--text); overflow: hidden; text-overflow: ellipsis; }
 .mem span { display: block; font-size: 16px; line-height: 1.1; color: var(--muted); }
+.mem > div { min-width: 0; flex: 1; }
+.dot { flex: none; width: 10px; height: 10px; background: var(--line); }
+.dot.on { background: var(--gold); }
+#inscriptos .lead { margin-bottom: 16px; }
+#inscriptos .cta { margin-top: 16px; }
 .detail h3 { color: var(--gold); font-size: 13px; margin: 4px 0 10px; }
 .detail p { margin-bottom: 8px; }
 .detail .tag { font: 9px 'Press Start 2P', monospace; color: var(--muted); }

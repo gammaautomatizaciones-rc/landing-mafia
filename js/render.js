@@ -60,6 +60,15 @@ masterDetail('ranks', RANKS, 4, (r, box, i) => box.append(
 const withRole = (role) => MEMBERS.filter((m) => m.role === role);
 const withRank = (rank) => MEMBERS.filter((m) => m.rank === rank);
 
+// Tarjeta de persona (cara pixel, nick y rol), la usan Miembros e Inscriptos
+const person = (p) => {
+  const card = el('div', 'mem');
+  const who = el('div');
+  who.append(el('b', '', p.nick), el('span', '', p.role));
+  card.append(avatar(p.nick), who);
+  return card;
+};
+
 // Botón que lleva al formulario con el rol ya elegido
 const applyBtn = (text, role, cls) => {
   const b = el('button', 'btn ' + cls, text);
@@ -99,19 +108,23 @@ masterDetail('members-md', RANKS.map((r) => ({ ...r, count: withRank(r.name).len
   box.append(el('h3', '', `${r.name}: ${people.length} ${people.length === 1 ? 'miembro' : 'miembros'}`));
   if (!people.length) return box.append(el('p', '', 'Todavía no hay miembros en este rango.'));
   const grid = el('div', 'mgrid');
-  people.forEach((m) => {
-    const card = el('div', 'mem');
-    const who = el('div');
-    who.append(el('b', '', m.nick), el('span', '', m.role));
-    card.append(avatar(m.nick), who);
-    grid.append(card);
-  });
+  people.forEach((m) => grid.append(person(m)));
   box.append(grid);
 });
 
+// Inscriptos: ya mandaron su postulación. Punto dorado = ya en entrevista, gris = en revisión
+INSCRIPTOS.forEach((p) => {
+  const card = person(p);
+  const dot = el('i', p.estado === 'Entrevista' ? 'dot on' : 'dot');
+  dot.title = p.estado;
+  card.append(dot);
+  put('inscr', card);
+});
+if (!INSCRIPTOS.length) put('inscr', el('p', '', 'Todavía no hay inscriptos. Sé el primero.'));
+
 RULES.forEach((t) => put('rules', el('li', 'panel', t)));
 
-[[RANKS.length, 'rangos'], [AREAS.length, 'áreas'], [MEMBERS.length, 'miembros']].forEach(([n, label]) => {
+[[AREAS.length, 'áreas'], [MEMBERS.length, 'miembros'], [INSCRIPTOS.length, 'inscriptos']].forEach(([n, label]) => {
   const s = el('div', 'panel stat');
   s.append(el('b', '', String(n)), el('span', '', label));
   put('stats', s);
