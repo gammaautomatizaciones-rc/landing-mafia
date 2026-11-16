@@ -20,9 +20,9 @@ form.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(Object.fromEntries(new FormData(form))),
     });
-    if (!res.ok) throw new Error(res.status);
-    form.reset();
-    say('Listo. Un Reclutador te contacta pronto.', true);
+    if (res.status === 400) say('Revisa tu nick y tu Discord o teléfono: alguno no es válido.', false);
+    else if (!res.ok) throw new Error(res.status);
+    else { form.reset(); say('Listo. Un Reclutador te contacta pronto.', true); }
   } catch {
     say('No se pudo enviar. Prueba de nuevo en unos minutos.', false);
   }
