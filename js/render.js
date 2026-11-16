@@ -134,14 +134,10 @@ RULES.forEach((t) => put('rules', el('li', 'panel', t)));
   put('stats', s);
 });
 
+// Selector corto: solo lo que se puede pedir al entrar (APPLY en data.js), no los 23 roles de Áreas
 const sel = document.getElementById('rol');
 sel.append(new Option('Elige tu rol...', ''));
-AREAS.forEach((a) => {
-  const g = el('optgroup');
-  g.label = a.name;
-  a.roles.forEach(([name]) => g.append(new Option(name, name)));
-  sel.append(g);
-});
+APPLY.forEach(([valor, texto]) => sel.append(new Option(texto, valor)));
 
 const start = location.hash.slice(1);
 show(TABS.some(([id]) => id === start) ? start : 'inicio');

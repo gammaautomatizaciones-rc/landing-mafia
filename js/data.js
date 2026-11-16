@@ -89,6 +89,16 @@ const INSCRIPTOS = [
 // Sin sicarios entre los miembros a propósito: es el llamado. Cuando ya no hagan falta, vaciar la lista.
 const HIRING = ['Sicarios'];
 
+// Opciones del selector "Rol que quieres" del formulario: [valor que se guarda, texto que se ve].
+// Corto a propósito (orden de Gastón): Recluta y Asociado son solo mineros y granjeros; el resto, a pelear o a ser sicario.
+const APPLY = [
+  ['Combatiente', 'Combatiente (PvP)'],
+  ['Tirador', 'Tirador (armas de fuego)'],
+  ['Sicario', 'Sicario'],
+  ['Minero', 'Minero'],
+  ['Granjero', 'Granjero'],
+];
+
 // [id de la sección, texto de la pestaña, icono]
 const TABS = [
   ['inicio', 'Inicio', 'crown'],
