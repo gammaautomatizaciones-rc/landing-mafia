@@ -49,16 +49,19 @@ const AREAS = [
 ];
 
 const RULES = [
-  'Lealtad primero: la familia está por encima de cualquier amistad o discusión personal.',
-  'Omertà: lo que pasa en la familia no se cuenta afuera. Ni bases, ni coordenadas, ni planes.',
-  'Prohibido robar o griefear a los tuyos. Quien traiciona, sale y queda marcado.',
-  'Respeto a la cadena de mando: se obedece al Capo y se consulta al Teniente.',
-  'Actividad: avisa si te vas a ausentar. Quien desaparece sin avisar pierde su rango.',
-  'Se juega limpio dentro de las reglas del servidor: sin hacks, sin duplicar items, sin trampas.',
+  'Lealtad primero: la familia va antes que cualquier amistad.',
+  'Omertà: lo que pasa en la familia no se cuenta afuera.',
+  'Nada de robar ni griefear a los tuyos. Quien traiciona, sale.',
+  'Respeto a la cadena de mando: al Capo se le obedece.',
+  'Actividad: avisa si te ausentas o pierdes tu rango.',
+  'Juego limpio: sin hacks, sin duplicar items, sin trampas.',
 ];
 
-const STEPS = [
-  ['PASO 1', 'Postúlate', 'Completa el formulario con tu nick, tu Discord y el rol que quieres.'],
-  ['PASO 2', 'Entrevista', 'Un Reclutador te escribe por Discord y charlan unos minutos.'],
-  ['PASO 3', 'Prueba', 'Entras como Recluta y se sube de rango por mérito, no por tiempo.'],
+// [id de la sección, texto de la pestaña, icono]
+const TABS = [
+  ['inicio', 'Inicio', 'crown'],
+  ['rangos', 'Rangos', 'star'],
+  ['areas', 'Áreas', 'sword'],
+  ['codigo', 'Código', 'scroll'],
+  ['unirme', 'Unirme', 'shield'],
 ];

@@ -1,4 +1,4 @@
-// Envía la postulación al Worker, que la reenvía al canal de Discord (el webhook no está acá).
+// Envía la postulación (nick, Discord, rol) al Worker, que la reenvía al canal de Discord.
 const API = 'https://mafia-reclutamiento.gamma-automatizaciones.workers.dev';
 const form = document.getElementById('form');
 const msg = document.getElementById('msg');
@@ -22,7 +22,7 @@ form.addEventListener('submit', async (e) => {
     });
     if (!res.ok) throw new Error(res.status);
     form.reset();
-    say('Postulación enviada. Un Reclutador te va a escribir por Discord.', true);
+    say('Listo. Un Reclutador te escribe por Discord.', true);
   } catch {
     say('No se pudo enviar. Prueba de nuevo en unos minutos.', false);
   }
