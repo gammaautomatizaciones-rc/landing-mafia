@@ -65,7 +65,7 @@ const person = (p) => {
   const card = el('div', 'mem');
   const who = el('div');
   who.append(el('b', '', p.nick), el('span', '', p.role));
-  card.append(avatar(p.nick), who);
+  card.append(avatar(p.nick, p), who);
   return card;
 };
 

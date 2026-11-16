@@ -17,10 +17,10 @@ const ICONS = {
 // Cara pixel estilo Minecraft, distinta por nick (colores sacados de un hash del nombre)
 const SKINS = ['#c58c5c', '#e0ac69', '#8d5524', '#f1c27d', '#ffdbac'];
 const HAIRS = ['#3b2a1a', '#18181b', '#6b4423', '#c9a227', '#8a1c1c', '#d4d4d8'];
-function avatar(nick) {
+function avatar(nick, look = {}) {
   let h = 0;
   for (const c of nick) h = (h * 31 + c.charCodeAt(0)) >>> 0;
-  const skin = SKINS[h % SKINS.length], hair = HAIRS[(h >> 3) % HAIRS.length];
+  const skin = look.skin || SKINS[h % SKINS.length], hair = look.hair || HAIRS[(h >> 3) % HAIRS.length];
   const ns = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(ns, 'svg');
   svg.setAttribute('viewBox', '0 0 8 8');

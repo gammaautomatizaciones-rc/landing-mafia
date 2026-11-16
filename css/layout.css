@@ -45,6 +45,8 @@ main { flex: 1; min-height: 0; }
   .logo { height: min(30vh, 240px); }
 }
 
+@media (max-width: 380px) { .tab { font-size: 11px; } }
+
 /* pantallas bajas (notebooks chicos y celulares): el logo se achica para que Inicio no haga scroll.
    Va al final para ganarle a la regla del celular. */
 @media (max-height: 700px) {
