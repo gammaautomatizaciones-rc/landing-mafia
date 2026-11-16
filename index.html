@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MAFIA TEAM | Reclutamiento abierto en Minecraft</title>
+  <meta name="description" content="Únete a MAFIA TEAM, la familia de Minecraft. Rangos, áreas de guerra, finanzas y sicarios. Postúlate con tu Discord y elige tu rol.">
+  <link rel="canonical" href="https://mafia.agenciaartemoda.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://mafia.agenciaartemoda.com/">
+  <meta property="og:title" content="MAFIA TEAM | Reclutamiento abierto">
+  <meta property="og:description" content="La familia de Minecraft busca gente. Elige tu rol, sube de rango y únete a la mafia.">
+  <meta property="og:image" content="https://mafia.agenciaartemoda.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#09090b">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand px" href="#inicio"><img src="assets/favicon.png" alt="" width="32" height="32">MAFIA TEAM</a>
+      <a class="l" href="#jerarquia">Jerarquía</a>
+      <a class="l" href="#areas-sec">Áreas</a>
+      <a class="l" href="#codigo">Código</a>
+      <a class="btn" href="#postular">Postularme</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <span class="badge px"><i></i>RECLUTAMIENTO ABIERTO</span>
+        <h1><img class="logo" src="assets/logo.png" alt="MAFIA TEAM" width="815" height="780"></h1>
+        <p class="lead">Una familia, un servidor, una sola palabra. Elige tu rol, gánate tu rango y únete a la mafia de Minecraft.</p>
+        <div class="cta">
+          <a class="btn" href="#postular">Quiero entrar</a>
+          <a class="btn alt" href="#jerarquia">Ver la jerarquía</a>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <section id="jerarquia">
+      <div class="wrap">
+        <h2 class="title">La jerarquía</h2>
+        <p class="lead">Ocho rangos, del Don al Recluta. Todos empiezan abajo y se sube por lealtad, actividad y resultados.</p>
+        <div class="ranks" id="ranks"></div>
+      </div>
+    </section>
+
+    <section id="areas-sec">
+      <div class="wrap">
+        <h2 class="title">Las áreas</h2>
+        <p class="lead">Cada miembro elige dónde sirve a la familia. Mira los roles de cada área y elige el tuyo al postularte.</p>
+        <div class="areas" id="areas"></div>
+      </div>
+    </section>
+
+    <section id="codigo">
+      <div class="wrap">
+        <h2 class="title">El código</h2>
+        <p class="lead">Seis reglas que no se negocian. Quien las rompe, sale.</p>
+        <ol class="rules" id="rules"></ol>
+      </div>
+    </section>
+
+    <section id="postular">
+      <div class="wrap">
+        <h2 class="title">Postúlate</h2>
+        <p class="lead">Tres pasos para entrar. Todos los campos son obligatorios salvo los marcados como opcionales.</p>
+        <div class="steps" id="steps"></div>
+        <form class="panel form" id="form" novalidate>
+          <div class="row">
+            <label>Nick de Minecraft<input name="nick" required minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" placeholder="Steve_123" autocomplete="off"></label>
+            <label>Usuario de Discord<input name="discord" required maxlength="33" placeholder="tuusuario" autocomplete="off"></label>
+          </div>
+          <div class="row">
+            <label>Edad<input name="edad" type="number" required min="8" max="99" inputmode="numeric" placeholder="16"></label>
+            <label>Edición
+              <select name="edicion" required><option value="">Elige una...</option><option>Java</option><option>Bedrock</option></select>
+            </label>
+          </div>
+          <div class="row">
+            <label>Rol que quieres<select name="rol" id="rol" required></select></label>
+            <label>Segunda opción (opcional)<select name="rol2" id="rol2"></select></label>
+          </div>
+          <label>Días y horario en que juegas<input name="horario" required maxlength="80" placeholder="Lunes a viernes, 18 a 22 h"></label>
+          <label>Tu experiencia (opcional)<small>PvP, redstone, construcción, otros servidores...</small>
+            <textarea name="experiencia" maxlength="500"></textarea></label>
+          <label>¿Por qué quieres entrar a la familia?<textarea name="motivo" required minlength="20" maxlength="500"></textarea></label>
+          <input class="hp" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check"><input type="checkbox" name="acepto" required>Acepto el Código de la familia</label>
+          <button class="btn" type="submit">Enviar postulación</button>
+          <p class="msg" id="msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><p>MAFIA TEAM · Reclutamiento abierto · Hecho para Minecraft</p></div></footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/pixel.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/form.js" defer></script>
+</body>
+</html>
